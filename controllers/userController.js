@@ -82,5 +82,5 @@ module.exports = {
   getConnectedPeopleController,
   addController,
   checkAddedController,
-  getAllUsersController,
+  getAllUsersController
 };

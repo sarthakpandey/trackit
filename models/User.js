@@ -15,9 +15,6 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  avatar: {
-    type: String
-  },
   connectedPeople: [
     {
       user: {
@@ -25,9 +22,6 @@ const UserSchema = new Schema({
         ref: "users"
       },
       name: {
-        type: String
-      },
-      avatar: {
         type: String
       },
       date: {
