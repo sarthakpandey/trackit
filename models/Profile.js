@@ -30,8 +30,7 @@ const ProfileSchema = new Schema({
     type: String
   },
   issues: {
-    type: [String],
-    required: true
+    type: [String]
   },
   date: {
     type: Date,
