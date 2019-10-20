@@ -15,11 +15,13 @@ const getAllUsersController = async (req, res) => {
 
 const getConnectedPeopleController = async (req, res) => {
   try {
+    console.log("hello1");
     const user = await User.findById(req.user._id);
-
+    console.log("hello2");
     res.status(200).json(user.connectedPeople);
+    console.log("hello3");
   } catch (err) {
-    res.json({ err });
+    res.json({ err: err });
   }
 };
 
@@ -28,6 +30,8 @@ const addController = async (req, res) => {
     const acceptor_id = req.user._id;
 
     const sender_id = req.params.id;
+
+    console.log(acceptor_id, sender_id);
 
     if (acceptor_id.toString() === sender_id.toString()) {
       return res.json({ invalid: "Invalid action" });

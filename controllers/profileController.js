@@ -83,6 +83,25 @@ const profileCurrentGetController = async (req, res) => {
   }
 };
 
+const profileGetAllController = async (req, res) => {
+  try {
+    const profiles = await Profile.find({ identity: "doctor" }).populate(
+      "user",
+      ["name", "avatar"]
+    );
+
+    if (!profiles) {
+      return res
+        .status(404)
+        .json({ noProfile: "There is no profile for the current user" });
+    }
+
+    res.json(profiles);
+  } catch (err) {
+    res.status(404).json({ error: err });
+  }
+};
+
 const profileCurrentPostController = async (req, res) => {
   try {
     if (req.body.issues)
@@ -124,5 +143,6 @@ module.exports = {
   profileByHandleController,
   profileByUserIdController,
   profileCurrentGetController,
-  profileCurrentPostController
+  profileCurrentPostController,
+  profileGetAllController
 };
